@@ -1,31 +1,34 @@
 //
-//  ViewController.swift
+//  WaveViewController.swift
 //  WaveformPlayground
 //
-//  Created by Dejoe John on 2/26/18.
-//  Copyright © 2018 Dejoe John. All rights reserved.
+//  Created by haozes on 2019/4/23.
+//  Copyright © 2019 Dejoe John. All rights reserved.
 //
 
 import UIKit
 import AVKit
 
-class ViewController: UIViewController {
 
-    @IBOutlet weak var waveformView: SiriWaveformView!
+class WaveViewController: UIViewController {
+
+    @IBOutlet var imgView: UIImageView!
     
+    private var drawerProxy:WavefromDrawerProxy?
     var recorder:AVAudioRecorder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        drawerProxy = WavefromDrawerProxy(image: imgView)
         setupRecorder()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     //Recorder Setup Begin
     @objc func setupRecorder() {
@@ -40,9 +43,9 @@ class ViewController: UIViewController {
     func startRecording() {
         let recordingSession = AVAudioSession.sharedInstance()
         let recorderSettings = [AVSampleRateKey: NSNumber(value:44100.0),
-                                 AVFormatIDKey: NSNumber(value:kAudioFormatAppleLossless),
-                                 AVNumberOfChannelsKey: NSNumber(value: 2),
-                                 AVEncoderAudioQualityKey: NSNumber(value: Int8(AVAudioQuality.min.rawValue))]
+                                AVFormatIDKey: NSNumber(value:kAudioFormatAppleLossless),
+                                AVNumberOfChannelsKey: NSNumber(value: 2),
+                                AVEncoderAudioQualityKey: NSNumber(value: Int8(AVAudioQuality.min.rawValue))]
         let url:URL = URL(fileURLWithPath:"/dev/null");
         do {
             try recordingSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playAndRecord)))
@@ -51,7 +54,7 @@ class ViewController: UIViewController {
             let displayLink: CADisplayLink = CADisplayLink(target: self, selector: #selector(ViewController.updateMeters))
             displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
             self.recorder.prepareToRecord()
-            self.recorder.isMeteringEnabled = true;
+            self.recorder.isMeteringEnabled = true
             self.recorder.record()
             print("recorder enabled")
         } catch {
@@ -64,7 +67,7 @@ class ViewController: UIViewController {
         var normalizedValue: Float
         recorder.updateMeters()
         normalizedValue = _normalizedPowerLevelFromDecibels(decibels: recorder.averagePower(forChannel: 0))
-        self.waveformView.updateWithLevel(level: normalizedValue)
+        self.drawerProxy?.updateWithLevel(level: normalizedValue)
     }
     
     
@@ -102,12 +105,12 @@ class ViewController: UIViewController {
         return permissionCheck
     }
     //Recorder Setup End
-
-
+    
+    
 }
 
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
-	return input.rawValue
+    return input.rawValue
 }

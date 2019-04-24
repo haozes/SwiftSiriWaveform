@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D75CBDF0226E93C9001A8862 /* WaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75CBDEF226E93C9001A8862 /* WaveViewController.swift */; };
+		D75CBDF2226E96B8001A8862 /* WaveformDrawerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75CBDF1226E96B8001A8862 /* WaveformDrawerProxy.swift */; };
+		D75CBDF4226E96E6001A8862 /* WaveformDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75CBDF3226E96E6001A8862 /* WaveformDrawer.swift */; };
 		E05861A72043DE070049CEAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05861A62043DE070049CEAE /* AppDelegate.swift */; };
 		E05861A92043DE070049CEAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05861A82043DE070049CEAE /* ViewController.swift */; };
 		E05861AC2043DE070049CEAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05861AA2043DE070049CEAE /* Main.storyboard */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D75CBDEF226E93C9001A8862 /* WaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveViewController.swift; sourceTree = "<group>"; };
+		D75CBDF1226E96B8001A8862 /* WaveformDrawerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformDrawerProxy.swift; sourceTree = "<group>"; };
+		D75CBDF3226E96E6001A8862 /* WaveformDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformDrawer.swift; sourceTree = "<group>"; };
 		E05861A32043DE070049CEAE /* WaveformPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaveformPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05861A62043DE070049CEAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05861A82043DE070049CEAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,12 +63,15 @@
 			isa = PBXGroup;
 			children = (
 				E05861A62043DE070049CEAE /* AppDelegate.swift */,
+				D75CBDEF226E93C9001A8862 /* WaveViewController.swift */,
 				E05861A82043DE070049CEAE /* ViewController.swift */,
 				E05861AA2043DE070049CEAE /* Main.storyboard */,
 				E05861AD2043DE070049CEAE /* Assets.xcassets */,
 				E05861AF2043DE070049CEAE /* LaunchScreen.storyboard */,
 				E05861B22043DE070049CEAE /* Info.plist */,
 				E05861B82043DE350049CEAE /* SiriWaveformView.swift */,
+				D75CBDF1226E96B8001A8862 /* WaveformDrawerProxy.swift */,
+				D75CBDF3226E96E6001A8862 /* WaveformDrawer.swift */,
 			);
 			path = WaveformPlayground;
 			sourceTree = "<group>";
@@ -99,6 +108,7 @@
 				TargetAttributes = {
 					E05861A22043DE060049CEAE = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -139,9 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75CBDF2226E96B8001A8862 /* WaveformDrawerProxy.swift in Sources */,
 				E05861A92043DE070049CEAE /* ViewController.swift in Sources */,
+				D75CBDF0226E93C9001A8862 /* WaveViewController.swift in Sources */,
 				E05861B92043DE350049CEAE /* SiriWaveformView.swift in Sources */,
 				E05861A72043DE070049CEAE /* AppDelegate.swift in Sources */,
+				D75CBDF4226E96E6001A8862 /* WaveformDrawer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +296,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Labs.WaveformPlayground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -297,7 +310,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Labs.WaveformPlayground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
